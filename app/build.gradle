@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+// kanei apply ton kotlin annotation processor
+apply plugin: 'kotlin-kapt'
+// kanei applay to navigation safe args pou kaname import sto build.gradle tou project
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.kottarido.unipi.forecastmvvm"
+        minSdkVersion 23
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // implementations gia to Navigation
+    // Java language implementation
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // implementations gia tin Room library (local database SQLite)
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // implementation gia Gson gia na metatrepoume json se kotlin kai to antitheto
+    implementation "com.google.code.gson:gson:2.8.5"
+
+    //implementation gia ta Kotlin Android Coroutines
+    // oi coroutines vasika einai light-weight threats tha ta doume analitka mesa sto project
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0-RC1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0-RC1"
+
+    // implementation gia tin Retrofit i opoia einai vivliothiki pou xrisimopoieite gia na pernei data meso api
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2'
+
+    // implementation gia to ViewModel oi opoies periexoun kai ta LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // implementation tis Kodein gia dependency injection
+    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+
+    // Better dateTime-time support even on older Android versions
+    implementation "com.jakewharton.threetenabp:threetenabp:1.1.0"
+
+    // implementation tou Glide gia na fortonoume kai na provaloume images (apo url, apo to storage tou kinitou klp)
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+
+    // implementation tou Groupie RecyclerView to opoio einai recyclerView library pou mas epitrepei
+    // na kanoume pragmata me ligoteres grammes kodika
+    implementation 'com.xwray:groupie:2.1.0'
+    implementation 'com.xwray:groupie-kotlin-android-extensions:2.1.0'
+
+    // Preference
+    implementation "androidx.preference:preference:1.0.0"
+
+    // implementation gia to Location tou xristi
+    implementation "com.google.android.gms:play-services-location:16.0.0"
+
+    // New Material Design
+    implementation "com.google.android.material:material:1.0.0"
+
+}
