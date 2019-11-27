@@ -8,6 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.kottarido.unipi.forecastmvvm.R
+import com.kottarido.unipi.forecastmvvm.data.WeatherApiService
+import kotlinx.android.synthetic.main.current_weather_fragment.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class CurrentWeatherFragment : Fragment() {
 
@@ -29,6 +34,17 @@ class CurrentWeatherFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CurrentWeatherViewModel::class.java)
         // TODO: Use the ViewModel
+
+        //TEST
+        // Ftiaxnoume ena instance tou WeatherApiService gia na doume an douleuei
+        // paralipontas ola ta vimata (viewModel,Repository klp) gia test purposes
+
+        val apiService = WeatherApiService()
+
+        GlobalScope.launch (Dispatchers.Main){
+            val currentWeatherResponse = apiService.getCurrentWeather("london").await()
+            textView.text = currentWeatherResponse.currentWeatherEntry.toString()
+        }
     }
 
 }

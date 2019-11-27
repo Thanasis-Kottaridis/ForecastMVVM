@@ -1,4 +1,4 @@
-package com.kottarido.unipi.forecastmvvm.data
+package com.kottarido.unipi.forecastmvvm.data.response
 
 import com.google.gson.annotations.SerializedName
 

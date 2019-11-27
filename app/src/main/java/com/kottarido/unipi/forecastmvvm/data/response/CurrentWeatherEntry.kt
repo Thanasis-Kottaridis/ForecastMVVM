@@ -1,4 +1,4 @@
-package com.kottarido.unipi.forecastmvvm.data
+package com.kottarido.unipi.forecastmvvm.data.response
 
 
 import com.google.gson.annotations.SerializedName
@@ -20,7 +20,7 @@ data class CurrentWeatherEntry(
     @SerializedName("wind_dir")
     val windDir: String,
     val pressure: Int,
-    val precip: Int,
+    val precip: Double,
     val humidity: Int,
     val cloudcover: Int,
     val feelslike: Int,
