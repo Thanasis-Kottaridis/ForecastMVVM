@@ -1,7 +1,5 @@
-package com.kottarido.unipi.forecastmvvm.data.response
+package com.kottarido.unipi.forecastmvvm.data.network.response
 
-
-import com.google.gson.annotations.SerializedName
 
 data class Request(
     val type: String,

@@ -1,8 +1,7 @@
 package com.kottarido.unipi.forecastmvvm.data
 
-import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.kottarido.unipi.forecastmvvm.data.response.CurrentWeatherResponse
+import com.kottarido.unipi.forecastmvvm.data.network.response.CurrentWeatherResponse
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -32,9 +31,9 @@ interface WeatherApiService {
         // edo tha diaxiristoume to komati url pou afora to query (query=New%20York)
         // opou to querry einai i parametros tis polis pou theloume ton kero
         @Query("query") location: String,
-        // mpori na exei kanei specify tin glossa stin opoia tha epistrafoun ta apotelesmata
-        // kai default timi tou lang tha einai agglika "en"
-        @Query("lang") languageCode: String = "en"
+        // mpori na exei kanei specify tin monada stin opoia tha epistrafoun ta apotelesmata
+        // kai default monada einai metric
+        @Query("units") unitCode: String = "m"
     ): Deferred<CurrentWeatherResponse>
 
     // episis xriazomaste kapiou idous class pou tha kanei implement auto to interface kai tha epistrefei ta
